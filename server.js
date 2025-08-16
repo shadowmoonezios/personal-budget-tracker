@@ -4,14 +4,15 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const app = express();
+
 app.use(cors()); // Enable CORS for all requests
 app.use(bodyParser.json()); // Parse JSON bodies
 
 // Establish database connection to MongoDB
 mongoose.connect('mongodb://localhost/personal-budget', { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
-  console.log('Datenbankverbindung erfolgreich!');
+  console.log('Datenbankverbindung erfolgreich!'); // Log successful connection
 }).catch((err) => {
-  console.error('Fehler bei der Datenbankverbindung:', err);
+  console.error('Fehler bei der Datenbankverbindung:', err); // Log connection error
 });
 
 // Define the route for the homepage
