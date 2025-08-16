@@ -8,7 +8,11 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Datenbankverbindung zu MongoDB
-mongoose.connect('mongodb://localhost/personal-budget', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost/personal-budget', { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
+  console.log('Datenbankverbindung erfolgreich!');
+}).catch((err) => {
+  console.error('Fehler bei der Datenbankverbindung:', err);
+});
 
 // Definiert die Route für die Startseite
 app.get('/', (req, res) => {
