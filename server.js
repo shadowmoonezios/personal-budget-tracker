@@ -7,19 +7,19 @@ const app = express();
 app.use(cors()); // Enable CORS for all requests
 app.use(bodyParser.json()); // Parse JSON bodies
 
-// Datenbankverbindung zu MongoDB
+// Establish database connection to MongoDB
 mongoose.connect('mongodb://localhost/personal-budget', { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
   console.log('Datenbankverbindung erfolgreich!');
 }).catch((err) => {
   console.error('Fehler bei der Datenbankverbindung:', err);
 });
 
-// Definiert die Route für die Startseite
+// Define the route for the homepage
 app.get('/', (req, res) => {
   res.send('API läuft!'); // Send response when root route is accessed
 });
 
-// Startet den Server auf dem angegebenen Port oder Port 5000
+// Start the server on the specified port or port 5000
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server läuft auf Port ${PORT}`); // Log the server port
